@@ -11,7 +11,7 @@ import edu.uptc.apirest.services.RoomService;
 
 @RestController
 @RequestMapping("/rooms")
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "https://front-taller-electiva2.vercel.app/")
 public class RoomController {
 
     @Autowired

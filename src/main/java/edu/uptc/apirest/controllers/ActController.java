@@ -9,7 +9,7 @@ import edu.uptc.apirest.services.ActService;
 
 @RestController
 @RequestMapping("/acts")
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "https://front-taller-electiva2.vercel.app/")
 public class ActController {
 
     @Autowired
