@@ -9,7 +9,6 @@ import edu.uptc.apirest.services.ActService;
 
 @RestController
 @RequestMapping("/acts")
-@CrossOrigin(origins = "http://localhost:4200/")
 public class ActController {
 
     @Autowired

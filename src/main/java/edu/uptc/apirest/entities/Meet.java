@@ -88,13 +88,4 @@ public class Meet {
         this.room = room;
     }
 
-    @Override
-    public String toString() {
-        return "Meet{" +
-                "id=" + id +
-                ", affair='" + affair + '\'' +
-                ", dateMeet=" + dateMeet +
-                ", room= " +room + "\n" +
-                '}';
-    }
 }

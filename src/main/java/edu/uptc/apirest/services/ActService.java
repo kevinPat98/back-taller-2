@@ -29,16 +29,17 @@ public class ActService {
 
         return actRepository.findAll();
     }
-
+  //Si es la primera vez, agreguelo
     /*PENDIENTE Validar cuando esta vacio [Para que no se dañe] */
     public Act save( Act act){
+
       Integer id_meet=  act.getMeet().getId();
-            
       if(!meetService.haveAct(id_meet)){ //validar que ese  meet no tenga una acta ya creada
         return actRepository.save(act);
       }else{
         return act;
       }
+      
     }
 
 
@@ -58,7 +59,7 @@ public class ActService {
 
         if(act.getId()!=null){
             Optional<Act> e = actRepository.findById(act.getId());
-            if(e.isEmpty()){
+            if(!e.isEmpty()){
                 if(act.getDescription()!=null){
                     e.get().setDescription(act.getDescription());
                 }
