@@ -33,42 +33,42 @@ public class MeetService {
         return optMeet.isPresent() ? optMeet.get() : null;
     }
 
-    // public Meet update (Meet meet){
+    public Meet update (Meet meet){
 
-    //     if(meet.getId()!=null){
-    //         Optional<Meet> e = meetRepository.findById(meet.getId());
-    //         if(!e.isEmpty()){
-    //             if(meet.getAffair()!=null){
-    //                 e.get().setAffair(meet.getAffair());
-    //             }
-    //             if(meet.getDateMeet()!=null){
-    //                 e.get().setDateMeet(meet.getDateMeet());
-    //             }
-    //             if(meet.getAct()!=null){
-    //                 e.get().setAct(meet.getAct());
-    //             }
-    //             if(meet.getRoom()!=null){
-    //                 e.get().setRoom(meet.getRoom());
-    //             }
-    //             meetRepository.save(e.get());
-    //             return e.get();
-    //         }else{
-    //             return meet;
-    //         }
-    //     }else{
-    //         return meet;
-    //     }
-
-    // }
-
-  public Meet update (Meet meet){
-        if(findById(meet.getId())!= null){
-            return meetRepository.save(meet);
+        if(meet.getId()!=null){
+            Optional<Meet> e = meetRepository.findById(meet.getId());
+            if(!e.isEmpty()){
+                if(meet.getAffair()!=null){
+                    e.get().setAffair(meet.getAffair());
+                }
+                if(meet.getDateMeet()!=null){
+                    e.get().setDateMeet(meet.getDateMeet());
+                }
+                if(meet.getAct()!=null){
+                    e.get().setAct(meet.getAct());
+                }
+                if(meet.getRoom()!=null){
+                    e.get().setRoom(meet.getRoom());
+                }
+                meetRepository.save(e.get());
+                return e.get();
+            }else{
+                return meet;
+            }
+        }else{
+            return meet;
         }
 
-        return null;
+    }
+
+//   public Meet update (Meet meet){
+//         if(findById(meet.getId())!= null){
+//             return meetRepository.save(meet);
+//         }
+
+//         return null;
        
-    } 
+//     } 
 
     public Meet delete (int id){
         Meet meet = findById(id);
