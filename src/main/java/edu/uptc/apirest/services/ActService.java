@@ -55,35 +55,35 @@ public class ActService {
         return optAct.isPresent() ? optAct.get() : null;
     }
 
-    // public Act update(Act act){
+    public Act update(Act act){
 
-    //     if(act.getId()!=null){
-    //         Optional<Act> e = actRepository.findById(act.getId());
-    //         if(!e.isEmpty()){
-    //             if(act.getDescription()!=null){
-    //                 e.get().setDescription(act.getDescription());
-    //             }
-    //             if(act.getMeet()!=null){
-    //                 e.get().setMeet(act.getMeet());
-    //             }
-    //             actRepository.save(e.get());
-    //             return e.get();
-    //         }else{
-    //             return act;
-    //         }
-    //     }else{
-    //         return act;
-    //     }
-    // }
-
-   public Act update(Act act){
-
-        if( findById( act.getId()) !=  null ){
-            return actRepository.save( act );
+        if(act.getId()!=null){
+            Optional<Act> e = actRepository.findById(act.getId());
+            if(e.isPresent()){
+                if(act.getDescription()!=null){
+                    e.get().setDescription(act.getDescription());
+                }
+                if(act.getMeet()!=null){
+                    e.get().setMeet(act.getMeet());
+                }
+                actRepository.save(e.get());
+                return e.get();
+            }else{
+                return act;
+            }
+        }else{
+            return act;
         }
-
-        return null;
     }
+
+//    public Act update(Act act){
+
+//         if( findById( act.getId()) !=  null ){
+//             return actRepository.save( act );
+//         }
+
+//         return null;
+//     }
 
     public Act delete(int id) {
         Act act = findById( id );
