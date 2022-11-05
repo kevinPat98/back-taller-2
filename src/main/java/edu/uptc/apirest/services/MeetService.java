@@ -37,7 +37,7 @@ public class MeetService {
 
         if(meet.getId()!=null){
             Optional<Meet> e = meetRepository.findById(meet.getId());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(meet.getAffair()!=null){
                     e.get().setAffair(meet.getAffair());
                 }
