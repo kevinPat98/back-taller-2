@@ -38,6 +38,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<scope>provided</scope>
+		
+	</dependency>
+	<dependency>
+    <groupId>org.kie.modules</groupId>
+    <artifactId>com-fasterxml-jackson</artifactId>
+    <version>6.5.0.Final</version>
+    <type>pom</type>
+</dependency>
 	</dependencies>
 
 	<build>
