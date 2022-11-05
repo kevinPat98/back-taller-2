@@ -1,16 +1,20 @@
 package edu.uptc.apirest.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import edu.uptc.apirest.entities.Act;
 import edu.uptc.apirest.entities.Meet;
+import edu.uptc.apirest.entities.Room;
 import edu.uptc.apirest.services.MeetService;
 
 
 @RestController
 @RequestMapping("/meets")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class MeetController {
 
     @Autowired
@@ -22,7 +26,16 @@ public class MeetController {
 
     @GetMapping
     public List<Meet> getMeet(){
-        return meetService.getMeets();
+        ArrayList<Meet> lista=(ArrayList<Meet>) meetService.getMeets();
+        for (int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).getAct() == null){
+                lista.get(i).setAct(new Act());
+            }
+            if(lista.get(i).getRoom() == null){
+                lista.get(i).setRoom(new Room());
+            }
+        }
+        return lista;
     }
 
     @GetMapping("/{id}")

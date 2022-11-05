@@ -25,7 +25,6 @@ public class MeetService {
 
     public Meet save(Meet meet){
         return meetRepository.save(meet);
-
     }
 
     public Meet findById(int id){
@@ -36,22 +35,23 @@ public class MeetService {
     public Meet update (Meet meet){
 
         if(meet.getId()!=null){
-            Optional<Meet> e = meetRepository.findById(meet.getId());
-            if(e.isPresent()){
+            Meet e = meetRepository.findById(meet.getId()).get();
+            if(e != null){
                 if(meet.getAffair()!=null){
-                    e.get().setAffair(meet.getAffair());
+                    e.setAffair(meet.getAffair());
                 }
                 if(meet.getDateMeet()!=null){
-                    e.get().setDateMeet(meet.getDateMeet());
+                    e.setDateMeet(meet.getDateMeet());
                 }
                 if(meet.getAct()!=null){
-                    e.get().setAct(meet.getAct());
+                    e.setAct(meet.getAct());
                 }
                 if(meet.getRoom()!=null){
-                    e.get().setRoom(meet.getRoom());
+                    e.setRoom(meet.getRoom());
                 }
-                meetRepository.save(e.get());
-                return e.get();
+                meetRepository.save(e);
+                return e;
+                
             }else{
                 return meet;
             }
@@ -61,14 +61,14 @@ public class MeetService {
 
     }
 
-//   public Meet update (Meet meet){
-//         if(findById(meet.getId())!= null){
-//             return meetRepository.save(meet);
-//         }
+ /*  public Meet update (Meet meet){
+        if(findById(meet.getId())!= null){
+            return meetRepository.save(meet);
+        }
 
-//         return null;
+        return null;
        
-//     } 
+    } */
 
     public Meet delete (int id){
         Meet meet = findById(id);

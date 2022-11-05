@@ -29,17 +29,16 @@ public class ActService {
 
         return actRepository.findAll();
     }
-  //Si es la primera vez, agreguelo
+
     /*PENDIENTE Validar cuando esta vacio [Para que no se dañe] */
     public Act save( Act act){
-
       Integer id_meet=  act.getMeet().getId();
+            
       if(!meetService.haveAct(id_meet)){ //validar que ese  meet no tenga una acta ya creada
         return actRepository.save(act);
       }else{
         return act;
       }
-      
     }
 
 
@@ -58,16 +57,16 @@ public class ActService {
     public Act update(Act act){
 
         if(act.getId()!=null){
-            Optional<Act> e = actRepository.findById(act.getId());
-            if(e.isPresent()){
+           Act e = actRepository.findById(act.getId()).get();
+            if(e != null){
                 if(act.getDescription()!=null){
-                    e.get().setDescription(act.getDescription());
+                    e.setDescription(act.getDescription());
                 }
                 if(act.getMeet()!=null){
-                    e.get().setMeet(act.getMeet());
+                    e.setMeet(act.getMeet());
                 }
-                actRepository.save(e.get());
-                return e.get();
+                actRepository.save(e);
+                return e;
             }else{
                 return act;
             }
@@ -76,14 +75,14 @@ public class ActService {
         }
     }
 
-//    public Act update(Act act){
+   /* public Act update(Act act){
 
-//         if( findById( act.getId()) !=  null ){
-//             return actRepository.save( act );
-//         }
+        if( findById( act.getId()) !=  null ){
+            return actRepository.save( act );
+        }
 
-//         return null;
-//     }
+        return null;
+    } */
 
     public Act delete(int id) {
         Act act = findById( id );

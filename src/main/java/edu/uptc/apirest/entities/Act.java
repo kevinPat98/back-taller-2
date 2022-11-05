@@ -24,7 +24,7 @@ public class Act {
 
     @OneToOne
     @JoinColumn(name="meet_id")
-    @JsonIgnoreProperties({"room", "act"})
+    //@JsonIgnoreProperties({"room", "act"})
     private Meet meet;
 
 
